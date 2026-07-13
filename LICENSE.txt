@@ -1,0 +1,31 @@
+# Proscenium software license
+
+Effective date: July 13, 2026.
+
+This license governs compiled Proscenium releases distributed by Flintglade. Questions and notices may be sent to [support@flintglade.com](mailto:support@flintglade.com).
+
+## License grant
+
+The Free edition may be used without charge by one individual user on devices that user owns or controls, including for internal commercial work.
+
+A valid Proscenium Pro purchase grants one individual user a non-exclusive, non-transferable license to use the Pro features on devices that user owns or controls, including for internal commercial work. An organization must purchase a license for each individual user who uses Pro features unless Flintglade provides different written terms.
+
+The launch purchase covers the Proscenium `0.x` release family and compatible updates Flintglade makes generally available for that family. A future major release family may require a separate entitlement unless Flintglade states otherwise.
+
+## Restrictions
+
+You may not resell, sublicense, publicly share a license key, remove proprietary notices, use Proscenium to provide a competing hosted service, or use it to test systems you do not own or lack authorization to test. Reverse engineering is prohibited except where applicable law expressly permits it.
+
+## Activation and revocation
+
+Pro activation requires online validation and uses a signed entitlement lease with a maximum fourteen-day offline lifetime. Refunded, reversed, disputed, fraudulent, or materially breached purchases may be revoked. Removing a local activation does not cancel the underlying purchase.
+
+## Refunds
+
+Refund requests may be sent to the support address within fourteen days of purchase. Approved refunds revoke the Pro entitlement. Rights that cannot legally be limited remain unaffected.
+
+## Warranty and liability
+
+To the maximum extent permitted by law, Proscenium is provided as-is without warranties of uninterrupted operation, merchantability, fitness for a particular purpose, or non-infringement. Flintglade is not liable for indirect, incidental, special, consequential, or lost-profit damages. Aggregate liability for Proscenium will not exceed the amount paid for the license giving rise to the claim.
+
+Proscenium is a development and test tool. It is not a production gateway, compliance certification, evidence notarization service, or substitute for independent engineering, security, or legal review.
