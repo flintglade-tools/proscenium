@@ -6,4 +6,4 @@
 - Added deterministic multi-step responses, replay, signature fixtures, schema assertions, mutation cases, and scenario/JUnit execution.
 - Added captured-event inspection, endpoint reset/delete controls, and redacted hash-chained evidence export.
 - Added Free and Pro enforcement with short-lived signed entitlement leases, refund/dispute revocation, and a $49 one-time Pro license for the 0.x release family.
-- Added reproducible Windows x64 packaging with CycloneDX SBOM, dependency notices, internal checksums, and an archive hash sidecar.
+- Added deterministic Windows x64 packaging with CycloneDX SBOM, dependency notices, internal checksums, and an archive hash sidecar.
