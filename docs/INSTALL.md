@@ -1,12 +1,12 @@
 # Install and launch
 
-Proscenium 0.1.0 supports Windows x64.
+Proscenium 0.1.1 supports Windows x64.
 
 1. Download the ZIP and matching `.sha256` file from the official GitHub release.
 2. Verify the ZIP hash:
 
    ```powershell
-   Get-FileHash .\proscenium-0.1.0-windows-x64.zip -Algorithm SHA256
+   Get-FileHash .\proscenium-0.1.1-windows-x64.zip -Algorithm SHA256
    ```
 
 3. Compare the lowercase result with the first value in the `.sha256` file.

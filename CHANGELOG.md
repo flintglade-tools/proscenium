@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 - 2026-07-13
+
+- Sanitized local build references from the CycloneDX SBOM and made package filenames and Windows version metadata derive from the Cargo package version.
+- Clarified that archives are deterministically packaged and checksum-verified in Flintglade's release process rather than externally reproducible from this customer-only repository.
+
 ## 0.1.0 - 2026-07-13
 
 - Added loopback-only webhook capture with redaction before persistence.
