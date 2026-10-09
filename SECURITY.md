@@ -2,6 +2,21 @@
 
 Report suspected vulnerabilities privately to [support@flintglade.com](mailto:support@flintglade.com). Include the affected version, reproduction steps, impact, and a safe proof of concept. Do not include real secrets or customer payloads.
 
+## Release maintenance status — 2026-10-09
+
+The published `v0.1.1` CycloneDX SBOM records `rustls 0.23.41`, which is affected
+by [GHSA-2mjx-qc3c-rqvc](https://github.com/rustls/rustls/security/advisories/GHSA-2mjx-qc3c-rqvc).
+Upstream fixes this TLS 1.3 encryption-level validation issue in `0.23.45`.
+The handshake transcript remains authenticated; the advisory does not establish
+that a network attacker can alter or complete a handshake.
+
+A replacement release must update rustls to at least `0.23.45`, run the private
+source's full tests and release gates, and regenerate the SBOM, notices and
+archive checksums. This public repository contains documentation and release
+artifacts, so the implementation cannot be rebuilt from it. Archive checksums
+and internal bundle checksums were verified on 2026-10-09; that integrity check
+does not remediate an affected dependency or independently prove runtime safety.
+
 ## Enforced boundaries
 
 - The server binds only `127.0.0.1`, and the default port is selected by the operating system.
