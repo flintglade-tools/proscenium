@@ -8,7 +8,7 @@ Proscenium is a local-first deterministic webhook reliability lab for Windows. I
 
 Windows may show an unrecognized-publisher warning because the initial release is not Authenticode-signed. The archive is deterministically packaged and checksum-verified in Flintglade's release process, and it is accompanied by a CycloneDX SBOM and third-party notices. Read [Installation](docs/INSTALL.md) before first launch.
 
-The current release has an outstanding TLS dependency update. Read the
+The current release has outstanding TLS and certificate-verification dependency updates. Read the
 [release maintenance status](SECURITY.md#release-maintenance-status--2026-10-09)
 before using HTTPS replay or license activation. A patched executable requires
 the private application source.
