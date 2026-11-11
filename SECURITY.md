@@ -4,18 +4,31 @@ Report suspected vulnerabilities privately to [support@flintglade.com](mailto:su
 
 ## Release maintenance status — 2026-10-09
 
-The published `v0.1.1` CycloneDX SBOM records `rustls 0.23.41`, which is affected
-by [GHSA-2mjx-qc3c-rqvc](https://github.com/rustls/rustls/security/advisories/GHSA-2mjx-qc3c-rqvc).
-Upstream fixes this TLS 1.3 encryption-level validation issue in `0.23.45`.
-The handshake transcript remains authenticated; the advisory does not establish
-that a network attacker can alter or complete a handshake.
+Rechecked against the published SBOM and the current RustSec database on 2026-11-11.
+The published `v0.1.1` archive still needs a replacement release. Its SBOM includes
+these affected TLS and certificate-verification dependencies:
 
-A replacement release must update rustls to at least `0.23.45`, run the private
-source's full tests and release gates, and regenerate the SBOM, notices and
-archive checksums. This public repository contains documentation and release
-artifacts, so the implementation cannot be rebuilt from it. Archive checksums
-and internal bundle checksums were verified on 2026-10-09; that integrity check
-does not remediate an affected dependency or independently prove runtime safety.
+| Dependency in the published SBOM | Minimum patched version | Upstream advisory |
+| --- | --- | --- |
+| rustls 0.23.41 | 0.23.46 | [TLS handshake validation](https://github.com/rustls/rustls/security/advisories/GHSA-2mjx-qc3c-rqvc) and [additional rustls fixes](https://rustsec.org/advisories/RUSTSEC-2026-0346.html) |
+| rustls-webpki 0.103.13 | 0.103.16 | [Distrusted intermediate certificates](https://rustsec.org/advisories/RUSTSEC-2026-0382.html) |
+| webpki-roots 1.0.8 | 1.0.10 | [Distrusted root/intermediate trust paths](https://rustsec.org/advisories/RUSTSEC-2026-0381.html) |
+
+The private-source lockfile also updates quinn-proto to 0.11.18, tokio to 1.53.3,
+rustix to 1.1.6 and the yanked chacha20 patch to 0.10.2. SBOM or lockfile presence
+alone does not establish that every optional feature is enabled or each advisory
+is reachable in the packaged application.
+
+The private-source repair passes 49 Linux tests, formatting, strict all-target
+Clippy and a fresh RustSec audit with warnings rejected. It has **not** produced a
+replacement Windows release. A replacement must pass the private source's full
+Windows tests and production package/signed-lease smoke gates, then regenerate
+its SBOM, notices and archive checksums before publication.
+
+This public repository contains documentation and release artifacts, so the
+implementation cannot be rebuilt from it. Archive checksums and internal bundle
+checksums were verified on 2026-10-09; that integrity check does not remediate an
+affected dependency or independently prove runtime safety.
 
 ## Enforced boundaries
 
