@@ -2,33 +2,34 @@
 
 Report suspected vulnerabilities privately to [support@flintglade.com](mailto:support@flintglade.com). Include the affected version, reproduction steps, impact, and a safe proof of concept. Do not include real secrets or customer payloads.
 
-## Release maintenance status — 2026-10-09
+<a name="release-maintenance-status--2026-10-09"></a>
 
-Rechecked against the published SBOM and the current RustSec database on 2026-11-11.
-The published `v0.1.1` archive still needs a replacement release. Its SBOM includes
-these affected TLS and certificate-verification dependencies:
+## Release maintenance status
 
-| Dependency in the published SBOM | Minimum patched version | Upstream advisory |
+On 2026-11-23, the RustSec check of crate versions in the
+[published v0.1.1 SBOM](https://github.com/flintglade-tools/proscenium/releases/download/v0.1.1/proscenium-0.1.1.cdx.json)
+matched 15 advisories across six dependencies. The versions below are from that
+SBOM. The listed updates cover those matches on each dependency's current version line.
+
+| Dependency in the published SBOM | Minimum version covering the listed advisories | Upstream advisories |
 | --- | --- | --- |
-| rustls 0.23.41 | 0.23.46 | [TLS handshake validation](https://github.com/rustls/rustls/security/advisories/GHSA-2mjx-qc3c-rqvc) and [additional rustls fixes](https://rustsec.org/advisories/RUSTSEC-2026-0346.html) |
+| quinn-proto 0.11.16 | 0.11.19 | [0338](https://rustsec.org/advisories/RUSTSEC-2026-0338.html), [0339](https://rustsec.org/advisories/RUSTSEC-2026-0339.html), [0340](https://rustsec.org/advisories/RUSTSEC-2026-0340.html), [0341](https://rustsec.org/advisories/RUSTSEC-2026-0341.html), [0342](https://rustsec.org/advisories/RUSTSEC-2026-0342.html), [0523](https://rustsec.org/advisories/RUSTSEC-2026-0523.html), [0524](https://rustsec.org/advisories/RUSTSEC-2026-0524.html) |
+| quinn-udp 0.5.15 | 0.5.16 | [Truncated datagram handling](https://rustsec.org/advisories/RUSTSEC-2026-0538.html) |
+| rustls 0.23.41 | 0.23.46 | [TLS handshake validation](https://rustsec.org/advisories/RUSTSEC-2026-0285.html), [Session debug output](https://rustsec.org/advisories/RUSTSEC-2026-0346.html), [Certificate decompression](https://rustsec.org/advisories/RUSTSEC-2026-0348.html), [Key exchange](https://rustsec.org/advisories/RUSTSEC-2026-0349.html) |
 | rustls-webpki 0.103.13 | 0.103.16 | [Distrusted intermediate certificates](https://rustsec.org/advisories/RUSTSEC-2026-0382.html) |
+| url 2.5.8 | 2.5.9 | [Nested blob URL handling](https://rustsec.org/advisories/RUSTSEC-2026-0592.html) |
 | webpki-roots 1.0.8 | 1.0.10 | [Distrusted root/intermediate trust paths](https://rustsec.org/advisories/RUSTSEC-2026-0381.html) |
 
-The private-source lockfile also updates quinn-proto to 0.11.18, tokio to 1.53.3,
-rustix to 1.1.6 and the yanked chacha20 patch to 0.10.2. SBOM or lockfile presence
-alone does not establish that every optional feature is enabled or each advisory
-is reachable in the packaged application.
+The audit also reported a warning for the Unix-only
+[Tokio AsyncFd advisory](https://rustsec.org/advisories/RUSTSEC-2026-0386.html)
+against Tokio 1.52.3 and a registry yank for chacha20 0.10.1.
 
-The private-source repair passes 49 Linux tests, formatting, strict all-target
-Clippy and a fresh RustSec audit with warnings rejected. It has **not** produced a
-replacement Windows release. A replacement must pass the private source's full
-Windows tests and production package/signed-lease smoke gates, then regenerate
-its SBOM, notices and archive checksums before publication.
+The SBOM identifies dependency versions. Runtime reachability in the Windows
+executable depends on compiled features and the paths the application invokes.
 
-This public repository contains documentation and release artifacts, so the
-implementation cannot be rebuilt from it. Archive checksums and internal bundle
-checksums were verified on 2026-10-09; that integrity check does not remediate an
-affected dependency or independently prove runtime safety.
+A **replacement Windows package is pending**. The release requires Windows
+tests, a production package smoke test with a signed license lease, and a
+regenerated SBOM, third-party notices and archive checksums.
 
 ## Enforced boundaries
 
